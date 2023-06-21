@@ -8,6 +8,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  // int count = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +17,17 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.brown,
           title: const Text('Flutter Practice'),
+        ),
+        body: ElevatedButton(
+          child: Text('Navigate'),
+          onPressed: () {
+            Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (_) => AboutScreen(),
+                ),
+              );
+          },
         ),
         /*
         body: ListView.builder(
@@ -26,12 +39,17 @@ class MyApp extends StatelessWidget {
           },
         ),
       ),
-      */
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            print('Welcome to the app');
+            setState(() {
+              count++;
+            });
+            ;
           },
+        ),
+        body: Center(
+          child: Text('$count', style: TextStyle(fontSize: 60)),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
@@ -61,7 +79,6 @@ class MyApp extends StatelessWidget {
             Icon(Icons.person)
           ],
         ),
-        /*
         body: Stack(
           children: [
             Container(
@@ -72,6 +89,20 @@ class MyApp extends StatelessWidget {
             Icon(Icons.verified)
           ],
         ),*/
+      ),
+    );
+  }
+}
+
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text('About'),
       ),
     );
   }
