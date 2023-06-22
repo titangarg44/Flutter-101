@@ -18,17 +18,19 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.brown,
           title: const Text('Flutter Practice'),
         ),
-        body: ElevatedButton(
-          child: Text('Navigate'),
-          onPressed: () {
-            Navigator.push(
-                context, 
+        body: Builder(builder: (context) {
+          return ElevatedButton(
+            child: Text('Navigate'),
+            onPressed: () {
+              Navigator.push(
+                context,
                 MaterialPageRoute(
                   builder: (_) => AboutScreen(),
                 ),
               );
-          },
-        ),
+            },
+          );
+        }),
         /*
         body: ListView.builder(
           itemBuilder: (_, index) {
